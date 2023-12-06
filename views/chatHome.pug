@@ -1,0 +1,22 @@
+extends base
+block style 
+    link(rel="stylesheet", href="/style/style.css")
+block content
+    .container-sm.mt-2
+        .container.header.mt-4.bg-success.bg-gradient.bg-opacity-50(style="margin-bottom:0px") 
+            p.userFullName #{user2.fullName} 
+            small.status  Checking ...
+        #chatContainer.container.bg-dark-subtle.form-control
+            if allchat 
+                for chat in allchat 
+                    if chat.sender === user2.userId
+                        .mb-2.mt-2.chat.left #{chat.message}
+                    else 
+                        .mb-2.mt-2.chat.right #{chat.message}
+        form#sendBtn(action='/')
+            .input-group.container(style='padding: 0px;')
+                input#message.form-control(type='text', placeholder='Enter Your chat', aria-describedby='button-addon2', spellcheck='false', required='true')
+                button#button-addon2.btn.btn-success.bg-gradient.bg-opacity-75(type='button') Send
+    script(src="/socket.io/socket.io.js") 
+    script(src="/script/index.js") 
+    

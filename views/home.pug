@@ -1,0 +1,12 @@
+extends base.pug
+block style 
+    link(rel="stylesheet", href="/style/style.css")
+block content 
+    #chatContainer.container.mt-4.bg-dark-subtle.form-control
+    form#sendBtn(action='/')
+      .input-group.container(style='padding: 0px')
+        input#message.form-control(type='text', placeholder='Enter Your chat', aria-describedby='button-addon2', spellcheck='false', required='true')
+        button#button-addon2.btn.btn-success.bg-gradient.bg-opacity-75(type='button')
+          | Send 
+    script(src="/socket.io/socket.io.js") 
+    script(src="/script/index.js") 
