@@ -28,6 +28,7 @@ const setupSocketIO = function (server) {
       removeUser(disconnectUser.userId);
       io.to(conversationId).emit("status", "Offline");
     });
+    
     if (checkUserOnlineOrNot(user2.userId))
       io.to(conversationId).emit("status", "Online");
     else io.to(conversationId).emit("status", "Offline");

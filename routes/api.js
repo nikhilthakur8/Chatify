@@ -42,7 +42,6 @@ api.get("/user/:id", async (req, res) => {
       } catch (error) {
         console.log(error);
       }
-
       res.json(user);
     }
   } catch (error) {

@@ -11,7 +11,7 @@ const staticRouter = require("./routes/staticRouter");
 const userRouter = require("./routes/user");
 const { connectToMongoose } = require("./connect");
 const authentication = require("./middleware/auth");
-const setUpSocketIO = require("./Web Socket/socket");
+const setUpSocketIO = require("./Web Socket/socket").default;
 const User = require("./models/user");
 const Chat = require("./models/chat");
 const apiRouter = require("./routes/api");
@@ -38,7 +38,12 @@ app.set("views", path.join(__dirname, "views"));
 //Routing
 app.use("/", staticRouter);
 app.use("/user", userRouter);
-app.use("/api",apiRouter);
+app.use("/api", apiRouter);
+
+const nikhil = express();
+nikhil.get("nikhil", (req, res) => {
+  res.json("hiii");
+});
 
 // Server listening
 server.listen(PORT, () =>
